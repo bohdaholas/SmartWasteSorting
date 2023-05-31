@@ -16,7 +16,13 @@ python split_images.py <data_path> <output_path>
 Already prepared dataset is located [here](https://drive.google.com/file/d/18Rg_8B40hAGZrmYmh4Byg3UzP0VItCBf/view?usp=sharing).
 
 ## Usage
-To use the model, in `data.yaml` file should be specified paths to train, val and test folders.
+To use the model, in `data.yaml` file should be specified paths to train, val and test folders. For example:
+```
+train: ./output/train
+val: ./output/val
+test: ./output/test
+```
+Then to train and predict data, the scripts `train.py` and `predict.py` are used.
 ```
 python train.py <model> <epochs> <batch>
 python predict.py <model> <source>
