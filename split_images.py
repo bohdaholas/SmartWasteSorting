@@ -1,20 +1,23 @@
 import sys
 import os
-import random
 import shutil
 from sklearn.model_selection import train_test_split
 
 input_dir = sys.argv[1]
 output_dir = sys.argv[2]
 
+classes = os.listdir(input_dir)
 images = []
 labels = []
-class_dir = input_dir
-for filename in os.listdir(class_dir):
-    file_path = os.path.join(class_dir, filename)
-    if filename[-3:] == "txt":
-        labels.append(file_path)
-        images.append(os.path.splitext(file_path)[0] + ".jpg")
+for class_name in classes:
+    print(class_name)
+    class_dir = os.path.join(input_dir, class_name)
+    for filename in os.listdir(class_dir):
+        file_path = os.path.join(class_dir, filename)
+        if filename[-3:] == "txt":
+            labels.append(file_path)
+            pre, _ = os.path.splitext(file_path)
+            images.append(pre + ".jpg")
 
 images.sort()
 labels.sort()

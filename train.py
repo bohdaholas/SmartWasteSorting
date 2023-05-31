@@ -1,6 +1,11 @@
+import sys
 from ultralytics import YOLO
 
-model = YOLO("yolov8n.pt")  # load a pretrained model
+model_path = sys.argv[1]
+epochs_num = sys.argv[2]
+batches_num = sys.argv[3]
 
-model.train(data="data.yaml", epochs=10, imgsz=640, batch=16)
+model = YOLO(model_path)
+
+model.train(data="data.yaml", epochs=int(epochs_num), imgsz=640, batch=int(batches_num))
 model.val(split="test")

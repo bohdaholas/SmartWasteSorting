@@ -1,6 +1,6 @@
-train: output/train/
-val: output/val/
-test: output/test/
+train: ./output/train
+val: ./output/val
+test: ./output/test
 
 nc: 6
 names:

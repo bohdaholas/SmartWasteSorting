@@ -1,5 +1,8 @@
+import sys
 from ultralytics import YOLO
 
-model = YOLO('best.pt') # load model
+model_path = sys.argv[1]
+source_path = sys.argv[2]
 
-model.predict(source="test/", save=True)
+model = YOLO(model_path)
+model.predict(source=source_path, save=True)

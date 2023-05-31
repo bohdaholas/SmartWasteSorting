@@ -19,12 +19,15 @@ def resize_images(folder_path, target_size):
 
         resized_bounding_box = []
         for line in lines:
-            class_index, x, y, w, h = line.strip().split()
-            x = float(x) * target_size / image.width
-            y = float(y) * target_size / image.height
-            w = float(w) * target_size / image.width
-            h = float(h) * target_size / image.height
-            resized_bounding_box.append(f'{class_index} {x} {y} {w} {h}\n')
+            try:
+                class_index, x, y, w, h = line.strip().split()
+                x = float(x) * target_size / image.width
+                y = float(y) * target_size / image.height
+                w = float(w) * target_size / image.width
+                h = float(h) * target_size / image.height
+                resized_bounding_box.append(f'{class_index} {x} {y} {w} {h}\n')
+            except:
+                print(image_file)
 
         resized_image.save(image_path)
 
